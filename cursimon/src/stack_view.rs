@@ -23,6 +23,10 @@ impl StackView {
         println!("say {}", self.layers.len());
     }
 
+    pub fn layers_len(& self) -> usize {
+        self.layers.len()
+    }
+
     pub fn get(&self, i: usize) -> Option<&View> {
         self.layers.get(i).map(|child| &*child.view)
     }
@@ -68,6 +72,10 @@ impl View {
     pub fn get(&self, i: usize) -> Option<&Button> {
         self.buttons.get(i).map(|child| &child.button)
     }
+
+    pub fn buttons_len(&self) -> usize {
+        self.buttons.len()
+    }
 }
 
 pub struct ChildButton {
@@ -106,6 +114,10 @@ pub struct Button {
 impl Button {
     pub fn get_cb(&self) -> &Callback {
         &self.callback
+    }
+
+    pub fn get_label(&self) -> String {
+        self.label.clone()
     }
 }
 
