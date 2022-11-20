@@ -1,8 +1,7 @@
 mod stack_view;
 use stack_view::StackView;
 use stack_view::View;
-use std::cell::RefCell;
-use std::rc::Rc;
+
 
 fn main() {
     let mut stack = StackView::new();
@@ -15,6 +14,8 @@ fn main() {
         s.say();
         print!("22");
     }));
+    let cb = stack.get(0).unwrap().get(0).unwrap().get_cb();
+    cb.clone().handle(&mut stack);
     let cb = stack.get(0).unwrap().get(0).unwrap().get_cb();
     cb.clone().handle(&mut stack);
 }

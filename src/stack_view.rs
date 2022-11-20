@@ -1,19 +1,6 @@
 use std::ops::{Deref, DerefMut};
 use std::rc::Rc;
 
-#[macro_export]
-macro_rules! inner_getters {
-    (self.$v:ident: $t:ty) => {
-        /// Gets access to the inner view.
-        pub fn get_inner(&self) -> &$t {
-            &self.$v
-        }
-        /// Gets mutable access to the inner view.
-        pub fn get_inner_mut(&mut self) -> &mut $t {
-            &mut self.$v
-        }
-    };
-}
 
 pub struct StackView {
     layers: Vec<ChildView>,
@@ -57,9 +44,7 @@ impl Deref for BoxedView {
     }
 }
 
-// impl BoxedView {
-//     inner_getters!(self.view: View);
-// }
+
 
 pub struct View {
     buttons: Vec<ChildButton>,
@@ -79,10 +64,6 @@ impl View {
         self.buttons.push(ChildButton::new(label, cb));
         self
     }
-
-    // pub fn get_button_callback(mut self, i: usize) -> Option<Callback> {
-    //     self.buttons.get(i).map(|child| child.button.callback)
-    // }
 
     pub fn get(&self, i: usize) -> Option<&Button> {
         self.buttons.get(i).map(|child| &child.button)
