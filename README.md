@@ -22,4 +22,4 @@ $ npm run serve
 
 ### How to Use
 
-https://github.com/meloalright/cursimon/blob/17c86c188cb3ee054ee9c631572d0e69048272cb/src/main.rs#L7-L32
+https://github.com/meloalright/cursimon/blob/17c86c188cb3ee054ee9c631572d0e69048272cb/wasm/src/lib.rs#L16-L26
